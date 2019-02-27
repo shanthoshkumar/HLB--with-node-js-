@@ -1,0 +1,24 @@
+.card {
+    box-shadow: 0 8px 10px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    /* width: 65%; */
+    height:300px;
+    /* margin-top: 50px; */
+    /* margin-left:250px; */
+   }
+ 
+   hr{
+    columns: #777777;
+ 
+   }
+   .card-footer{
+    /* height:200px; */
+    text-align: center;
+   }
+   h2{
+    color:#777777
+   }
+   body{
+    overflow-x:hidden;
+    overflow-y: hidden
+    }

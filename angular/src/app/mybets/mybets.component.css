@@ -1,0 +1,21 @@
+/* .modal-body{
+    height: 600px;
+    width: 900px;
+
+} */
+/* @media (min-width: 992px) */
+/* .modal-lg {
+    width: 900px;
+} */
+
+.tile_count{
+    border-right: 2px solid black;
+  }
+
+  .top{
+    margin-top: 60px;
+}
+body{
+    overflow-x:hidden;
+    overflow-y: hidden
+    }

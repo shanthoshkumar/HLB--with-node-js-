@@ -1,0 +1,48 @@
+/* .center{    
+    text-align: center;
+} */
+/* .top{
+    margin-top: 30px;   
+} */
+thead{
+    background-color:#2A3F54;
+    color: white;
+     
+ }
+ tbody{
+     background-color:white;
+ }
+ .tile_count{
+     border-right: 2px solid black;
+   }
+ /* #chartContainer{
+     height: 0px;
+      width: 50px; 
+      margin-top: 0px;
+      margin-left:5px;
+      margin-right:auto;
+ } */
+ 
+ .canvasjs-chart-credit
+ {
+     font-display: none;
+ }
+ /* .modal-body{
+     height: 600px;
+     width: 900px;
+ 
+ } */
+ /* @media (min-width: 992px) */
+ /* .modal-lg {
+     width: 900px;
+ } */
+ /* .modal-footer{
+     background-color: white
+ } */
+ .div{
+     width: 200px;
+     height: 200px;
+ }
+ /* .top{
+     margin-top: 60px;
+ } */

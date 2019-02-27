@@ -1,0 +1,60 @@
+<body class="login">
+    <div>
+       <a class="hiddenanchor" id="signup"></a>
+       <a class="hiddenanchor" id="signin"></a>
+       <div class="login_wrapper">
+          <div id="register" class="animate">
+             <section class="login_content">
+                <div class="success" *ngIf="showSucessMessage">
+                   Saved successfully
+                </div>
+                <!-- Error message -->
+                <div class="alert" *ngIf="serverErrorMessages">
+                   {{serverErrorMessages}}
+                </div>
+                <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+                <h1>Create Account</h1>
+                <input type="text" #fullName="ngModel" [(ngModel)]="userService.selectedUser.fullName" name="fullName" placeholder="Full Name" autocomplete="off"
+                required  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !fullName.valid }">
+                <div *ngIf="signUpForm.submitted && !fullName.valid">
+                   <label class="validation-message">This field is required.</label>
+                </div>
+                <input type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email" placeholder="Email" autocomplete="off"
+                required [pattern]="emailRegex"  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }">
+                <div *ngIf="signUpForm.submitted && email.errors">
+                   <label *ngIf="email.errors.required" class="validation-message">This field is required.</label>
+                   <label *ngIf="email.errors.pattern" class="validation-message">Invalid email address.</label>
+                </div>
+                <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password" placeholder="Password" autocomplete="off"
+                minlength="4" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }">
+                <div *ngIf="signUpForm.submitted && password.errors">
+                   <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
+                   <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 4 characters.</label>
+                </div>
+                <input type="text" #publickey="ngModel"  [(ngModel)]="userService.selectedUser.publickey" name="publickey" placeholder="private key" autocomplete="off"
+                required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !publickey.valid }" >                
+                <div *ngIf="signUpForm.submitted && !publickey.valid">
+                   <label class="validation-message">Account is required.</label>
+                </div>
+                <div>
+                   <button  type="submit"class="btn btn-default submit" value="Sign Up">Submit</button>
+                </div>
+                <div class="clearfix"></div>
+                <div class="separator">
+                   <p class="change_link">Already a member ?
+                      <a routerLink="/login" class="to_register"> Log in </a>
+                   </p>
+                   <div class="clearfix"></div>
+                   <br />
+                   <div>
+                      <h1><i class="fa fa-paw"></i> Chainflux </h1>
+                      <p>©2018 All Rights Reserved. Chainflux. Privacy and Terms</p>
+                   </div>
+                </div>
+                </form>
+             </section>
+          </div>
+       </div>
+    </div>
+ </body>
+ <!-- </html> -->

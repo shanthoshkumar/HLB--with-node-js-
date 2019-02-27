@@ -1,0 +1,49 @@
+<body>
+<br>
+<div class="row">
+   <div class="col-md-3 col-sm-6 col-xs-12">
+   </div>
+   <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="card">
+         <div class="card-header"  style="text-align:center">
+            <h3 style="color:  #2A3F54"><b>Deposit</b></h3>
+            <hr>
+            <div class="clearfix"></div>
+         </div>
+         <div class="card-body" style="text-align: center">
+            <label for="account"><input type="text" id="id1" autocomplete="off" class="form-control col-md-7 col-xs-12" placeholder="Enter Amount " #depo></label>
+         </div>
+         <div class="card-footer">
+            <br><br>
+            <button type="button" class="btn btn-round btn-primary" (click)="deposit(depo.value)">Deposit</button>&nbsp;
+         </div>
+      </div>
+   </div>
+   <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="card">
+         <div class="card-header" style="text-align:center">
+            <h3 style="color: #2A3F54"><b>Withdraw</b></h3>
+            <hr>
+            <div class="clearfix"></div>
+         </div>
+         <div class="card-body" style="text-align: center">
+            <label for="account"><input type="text" id="id2" autocomplete="off" class="form-control col-md-7 col-xs-12" placeholder="Enter Amount " #draw></label>
+         </div>
+         <div class="card-footer">
+            <br><br>
+            <button type="button" class="btn btn-round btn-primary" (click)="withdraw(draw.value)">Withdraw</button>&nbsp;
+         </div>
+      </div>
+   </div>
+   <div class="col-sm-1">
+       
+   </div>
+</div>
+</body>
+<ngx-spinner
+   bdColor="rgba(51,51,51,0.8)"
+   size="medium"
+   color="#fff"
+   type="ball-scale-multiple">
+   <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

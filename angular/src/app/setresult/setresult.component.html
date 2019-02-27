@@ -1,0 +1,103 @@
+<div class="container">
+    <br>
+    <div class="row">
+       <div class="col-sm-1"></div>
+       <div class="col-sm-11">
+          <div class="modal fade bs-example-modal-lg"  id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+             <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                      </button>
+                      <h4 class="modal-title" id="opid"></h4>
+                   </div>
+                   <div class="modal-body">
+                      <div class="center" role="main">
+                         <div class="row tile_count" style="text-align:center; font-size:15px;">
+                            <b>
+                               <div class="col-md-3 col-sm-4 col-xs-5 tile_stats_count">
+                                  <div class="count green" ><input type="radio" value ="1" id="r1" name="optradio">Loss</div>
+                               </div>
+                               <div class="col-md-3 col-sm-4 col-xs-4 tile_stats_count">
+                                  <div class="count red" ><input type="radio" value="2" id="r2" name="optradio">Draw</div>
+                               </div>
+                               <div class="col-md-3 col-sm-4 col-xs-4 tile_stats_count">
+                                  <div class="count"><input type="radio" value="3" id="r3" name="optradio">Won</div>
+                               </div>
+                               <div class="col-md-3 col-sm-4 col-xs-4 tile_stats_count">
+                               </div>
+                            </b>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="modal-footer" style="text-align:center">
+                      <button type="button" data-dismiss="modal" class="btn btn-round btn-primary" (click)="set_result()">Set Result</button>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="row">
+             <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="row" style="text-align: center">
+                   <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="x_panel">
+                         <div class="x_title">
+                            <h2>Set Results</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                            </ul>
+                            <div class="clearfix"></div>
+                         </div>
+                         <div class="x_content"  style="height:750px;overflow:auto">
+                            <table class="table" >
+                               <thead class="tablecolor">
+                                  <tr>
+                                     <th>Option ID</th>
+                                     <th>Team 1</th>
+                                     <th>Team 2</th>
+                                     <th>Team Selected</th>
+                                     <th>Start Time</th>
+                                     <th>End Time</th>
+                                     <th>Min Bet</th>
+                                     <th>Max Bet</th>
+                                     <th>Win Amount</th>
+                                     <th>Loss Amount</th>
+                                     <th>Win Count</th>
+                                     <th>Loss Count</th>
+                                     <th>Set Result</th>
+                                  </tr>
+                               </thead>
+                               <tbody>
+                                  <tr *ngFor="let option of optionsDetailsArray">
+                                     <td>{{ option.optionId }}</td>
+                                     <td>{{ option.team1 }}</td>
+                                     <td>{{ option.team2 }}</td>
+                                     <td>{{ option.selectTeam }}</td>
+                                     <td>{{ option.startTime }}</td>
+                                     <td>{{ option.endTime }}</td>
+                                     <td>{{ option.minBet }}</td>
+                                     <td>{{ option.maxBet }}</td>
+                                     <td>{{ option.winAmount }}</td>
+                                     <td>{{ option.lossAmount }}</td>
+                                     <td>{{ option.winCount }}</td>
+                                     <td>{{ option.lossCount }}</td>
+                                     <td *ngIf= option.bool><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" (click)=setoptionid(option.optionId)>Set</button></td>
+                                     <td *ngIf= !option.bool>{{option.result}}</td>
+                                  </tr>
+                               </tbody>
+                            </table>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ <ngx-spinner
+    bdColor="rgba(51,51,51,0.8)"
+    size="medium"
+    color="#fff"
+    type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">Loading...</p>
+ </ngx-spinner>

@@ -1,0 +1,82 @@
+<br><BR>
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-7">
+     <div class="card" style="text-align:center">
+        <div class="x_panel tile fixed_height_420 overflow_hidden">
+           <div class="card-header" style="text-align:center">
+              <h2>Create Bet</h2>
+              <hr>
+              <div class="clearfix"></div>
+           </div>
+           <div class="card-body animate form login_form" style="text-align:center">
+              <form #createOption="ngForm" (ngSubmit)="createOption.valid && onSubmit(createOption)">
+              <div class="x_content" style="text-align: center;height: 400px">
+                 <label for="team1">
+                    <input type="text" id="team1" #team1="ngModel"  class="form-control"   [(ngModel)]="userService.selectedTeam.team1" name="team1" placeholder="Team 1" autocomplete="off"
+                    required  [ngClass]="{'invalid-textbox' :createOption.submitted && !team1.valid }">
+                    <div *ngIf="createOption.submitted && !team1.valid">
+                 <label class="validation-message">This field is required.</label>
+                 </div>
+                 </label>&nbsp;
+                 <label for="team2">
+                    <input type="text"  class="form-control" id="team2" #team2="ngModel"  [(ngModel)]="userService.selectedTeam.team2" name="team2" placeholder="Team2" autocomplete="off"
+                    required [ngClass]="{'invalid-textbox' :createOption.submitted && !team2.valid }">
+                    <div *ngIf="createOption.submitted && team2.errors">
+                 <label class="validation-message">This field is required.</label>
+                 </div>
+                 </label>
+                 <br><br>
+                 <h4> <label for="account" style="color:black"><b>Select a Team </b></label></h4>
+                 <div >
+                    &nbsp; <input type="radio" name="Selected"  value="1" id="tm1" #selectTeam="ngModel" name="selectTeam" [(ngModel)]="userService.selectedTeam.selectTeam"  [ngClass]="{'invalid-radio' :createOption.submitted && !selectTeam.valid }">Team A
+                    &nbsp; &nbsp;<input type="radio" name="Selected"  value="2" id="tm2"  #selectTeam="ngModel" name="selectTeam" [(ngModel)]="userService.selectedTeam.selectTeam"  [ngClass]="{'invalid-radio' :createOption.submitted && !selectTeam.valid }">Team B
+                    <div *ngIf="createOption.submitted && selectTeam.errors">
+                       <label *ngIf="selectTeam.errors.required" class="validation-message">This field is required.</label>
+                    </div>
+                 </div>
+                 <br><br>
+                 <label for="min">
+                    <input type="text" class="form-control"  id="min" #min="ngModel"  [(ngModel)]="userService.selectedTeam.min" name="min" placeholder="min.amount" autocomplete="off"
+                    required [ngClass]="{'invalid-textbox' :createOption.submitted && !min.valid }"> 
+                    <div *ngIf="createOption.submitted && min.errors">
+                 <label class="validation-message">This field is required.</label>
+                 </div>
+                 </label>&nbsp;&nbsp;
+                 <label for="max">
+                    <input type="text" class="form-control" id="max" #max="ngModel"  [(ngModel)]="userService.selectedTeam.max" name="max" placeholder="max.amount"  autocomplete="off"
+                    required [ngClass]="{'invalid-textbox' :createOption.submitted && !max.valid }"> 
+                    <div *ngIf="createOption.submitted && max.errors">
+                 <label class="validation-message">This field is required.</label>
+                 </div>
+                 </label>
+                 <br><br><br>
+                 <label for="account" style="color:black">
+                    <b>Start Time:</b><input type="datetime-local" class="form-control" id="starttime" #starttime="ngModel"  [(ngModel)]="userService.selectedTeam.starttime" name="starttime" [ngClass]="{'invalid-textbox' :createOption.submitted && !starttime.valid }" />
+                    <div *ngIf="createOption.submitted && starttime.errors">
+                 <label class="validation-message">This field is required.</label>
+                 </div>
+                 </label>&nbsp;&nbsp;
+                 <label for="account" style="color:black">
+                    <b>End Time:</b><input type="datetime-local" class="form-control" id="endtime" #endtime="ngModel"  [(ngModel)]="userService.selectedTeam.endtime" name="endtime" [ngClass]="{'invalid-textbox' :createOption.submitted && !endtime.valid }" />
+                    <div *ngIf="createOption.submitted && endtime.errors">
+                 <label class="validation-message">This field is required.</label>
+                 </div></label>
+                 <br><br>
+                 <br>
+                 <input type="submit" class="btn" value="create bet">
+              </div>
+              </form>
+           </div>
+        </div>
+     </div>
+  </div>
+  <div class="col-sm-2">
+  </div>
+  <ngx-spinner
+     bdColor="rgba(51,51,51,0.8)"
+     size="medium"
+     color="#fff"
+     type="ball-scale-multiple">
+     <p style="font-size: 20px; color: white">Loading...</p>
+  </ngx-spinner>

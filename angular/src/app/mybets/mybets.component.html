@@ -1,0 +1,113 @@
+<body>
+    <div class="container">
+    <br> 
+    <div class="row">
+       <div class="modal fade bs-example-modal-lg"  id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+             <div class="modal-content">
+                <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                   </button>
+                   <h4 class="modal-title" id="myModalLabel">Bet Id:{{bet_id}}</h4>
+                </div>
+                <div class="modal-body">
+                   <div class="row ">
+                      <div class="col-md-4 col-sm-4 col-xs-5 tile_stats_count tile_count" style="text-align:center;">
+                         <span class="count_top"><i class="fa fa-user"></i>&nbsp;&nbsp;Peoples Betted on Win</span>
+                         <div class="count green" style="font-size:20px;">{{Betted_on_win}}</div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count tile_count" style="text-align:center;">
+                         <span class="count_top"><i class="fa fa-user"></i>&nbsp;&nbsp;Peoples Betted on Loss</span>
+                         <div class="count red" style="font-size:20px;">{{Betted_on_loss}}</div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count " style="text-align:center;">
+                         <span class="count_top"><i class="fa fa-user"></i>&nbsp;&nbsp;Total Betted Amount</span>
+                         <div class="count" style="font-size:20px;">{{total_betted_amount}}</div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count tile_count" style="text-align:center;margin-top: 10px">
+                         <span class="count_top"><i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;Maximum Amount </span>
+                         <div class="count" id="minamt" style=" font-size:20px;">{{maximum_bet_amount}}</div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count tile_count" style="text-align:center;margin-top: 10px">
+                         <span class="count_top"><i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;Minimum Amount </span>
+                         <div class="count" id="maxamt" style="font-size:20px;">{{minimum_bet_amount}}</div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count " style="text-align:center;margin-top: 10px">
+                         <span class="count_top"><i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;Your Betted Amount </span>
+                         <div class="count" id="maxamt" style=" font-size:20px;">{{betted_amount}}</div>
+                      </div>
+                   </div>
+                   <div class="row top">
+                      <div class="col-sm-12">
+                         <h4  id="content"></h4>
+                         <div id="chartContainer" ></div>
+                      </div>
+                   </div>
+                </div>
+                <br><br><br><br><br>
+                <br><br><br><br><br>
+                <br><br><br><br><br>
+                <br><br><br><br><br>
+                <div class="modal-footer" style="text-align:left">
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+             <div class="row" style="text-align: center">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                   <div class="x_panel">
+                      <div class="x_title">
+                         <h2>My Bets!</h2>
+                         <ul class="nav navbar-right panel_toolbox">
+                         </ul>
+                         <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content"  style="height:600px;overflow:auto">
+                         <table class="table" >
+                            <thead class="tablecolor">
+                               <tr>
+                                  <th>Option Id</th>
+                                  <th>Team 1</th>
+                                  <th>Team 2</th>
+                                  <th>Team Selected</th>
+                                  <th>Option Selected</th>
+                                  <th>Start Time</th>
+                                  <th>End Time</th>
+                                  <th>Bet Status</th>
+                                  <th>action</th>
+                                  <th></th>
+                               </tr>
+                            </thead>
+                            <tbody>
+                               <tr *ngFor="let option of myBetDetailsArray">
+                                  <td>{{ option.optionId }}</td>
+                                  <td>{{ option.team1 }}</td>
+                                  <td>{{ option.team2 }}</td>
+                                  <td>{{ option.selectTeam }}</td>
+                                  <td>{{ option.selectedoption }}</td>
+                                  <td>{{ option.startTime }}</td>
+                                  <td>{{ option.endTime }}</td>
+                                  <td>{{ option.result }}</td>
+                                  <td><button type="button" class="btn btn-default btn-lg"data-toggle="modal" data-target="#myModal" (click)="retrieve(option.optionId)" >{{ option.status }}</button></td>
+                                  <td *ngIf= option.canClaim><button type="button" class="btn btn-default btn-lg" (click)="claim(option.optionId)" >Claim</button></td>
+                               </tr>
+                            </tbody>
+                         </table>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+</body>
+ <ngx-spinner
+    bdColor="rgba(51,51,51,0.8)"
+    size="medium"
+    color="#fff"
+    type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">Loading...</p>
+ </ngx-spinner>

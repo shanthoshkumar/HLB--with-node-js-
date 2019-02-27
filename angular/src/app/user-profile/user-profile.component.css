@@ -1,0 +1,34 @@
+profile css
+.table {
+   width: 100%;
+ }
+ .table{
+   height: 230px;
+   /* overflow-y: auto; */
+   /* width: 100%; */
+ }
+h3{
+color: #73879C;
+}
+ b{
+   color: #73879C;
+ }
+
+ /* .scroll{
+   height: 600px;
+   overflow:hidden;
+   
+ } */
+
+ .center{
+   text-align: center;
+ }
+
+ #passwordmessage{
+  color: red;
+}
+
+body{
+  overflow-x:hidden;
+  overflow-y: hidden
+  }

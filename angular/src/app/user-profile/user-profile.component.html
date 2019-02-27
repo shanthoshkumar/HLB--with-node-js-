@@ -1,0 +1,63 @@
+
+   <body>
+      <br>
+      <div class ="container-fluid">
+         <br>
+         <br>
+         <div class = "row">
+            <div class = "col-sm-5">
+            </div>
+            <div class = "col-sm-7">
+               <br>
+               <img src="/assets/img/img.jpg" alt="..." class="img-circle profile_img" width="223" height="215">
+               <br>
+               <ul class="list-unstyled user_data">
+                  <h4>
+                     &nbsp;&nbsp;
+                     <li><i class="glyphicon glyphicon-user">&nbsp;</i>   
+                        {{userDetails}}
+                     </li>
+                     <br>
+                     <li>
+                        <i class="glyphicon glyphicon-envelope">&nbsp;</i>{{emails}}
+                     </li>
+                     <br>
+                     <li>
+                        <i class="fa fa-key user-profile-icon"></i>&nbsp;&nbsp;{{publickey}}
+                     </li>
+                     <br>
+                  </h4>
+                  <a class="btn btn-success" data-toggle="modal"  data-target="#increase" style="padding: 8px 30px" ><i class="fa fa-edit m-right-xs">&nbsp;</i>Change password</a>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <form action="/user/changepassword" method="POST">
+         <div class="modal fade" id="increase" role="dialog">
+            <div class="modal-dialog modal-sm">
+               <div class="modal-content">
+                  <div class="modal-header" >
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                     <h4 class="modal-title" >Change Password</h4>
+                  </div>
+                  <div class="modal-body" >
+                     <div class="center">
+                        <p id="emailid">{{emails}}</p>
+                     </div>
+                     <input type="hidden" name="email" #email value="{{emails}}">
+                     <input type="password" class="form-control" name="passwordold" #passwordold placeholder="Old password" required minlength="4">&nbsp;
+                     <input type="password" class="form-control" placeholder="New password" #newpass  required minlength="4">
+                     <input type="password" class="form-control" name="password" #password placeholder="confirm password" required minlength="4" (input)="passwordchange(newpass.value,password.value)">&nbsp;
+                     <p id="passwordmessage"></p>
+                     <div style="text-align: center">
+                        <button   type="button"class="btn btn-default submit" (click)="change(email.value,passwordold.value,password.value)" value="change">submit</button>
+                        &nbsp;<a class="btn btn-danger"   data-dismiss="modal">cancel</a>
+                     </div>
+                     <!-- </form> -->
+                  </div>
+               </div>
+            </div>
+         </div>
+      </form>
+      <br><br>   
+   </body>

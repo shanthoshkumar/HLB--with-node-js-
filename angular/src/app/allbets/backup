@@ -1,0 +1,169 @@
+<div class="container">
+    <br>
+    <!-- <input type="button" value="Check" (click)="myModal"> -->
+    
+    <div class="row">
+      <!-- Dropdown -->
+      <!-- <div class="modal fade" id="myModal" role="dialog"> -->
+      <div class="modal fade bs-example-modal-lg"  id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+              </button>
+              <h4 class="modal-title" id="myModalLabel">Bet Id:{{bet_id}}</h4>
+            </div>
+            <div class="modal-body">          
+              <!-- page content -->
+              <div class="center_col" role="main">
+                    <!-- top tiles -->
+                <div class="row tile_count">  
+                  <b>
+                    <div class="col-md-3 col-sm-4 col-xs-5 tile_stats_count">
+                      <span class="count_top"><i class="fa fa-user"></i>&nbsp;&nbsp;Peoples Betted on Win</span>
+                      <div class="count green" style="text-align:center; font-size:20px;">{{Betted_on_win}}</div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-4 tile_stats_count">
+                      <span class="count_top"><i class="fa fa-user"></i>&nbsp;&nbsp;Peoples Betted on Loss</span>
+                      <div class="count red" style="text-align:center; font-size:20px;">{{Betted_on_loss}}</div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-4 tile_stats_count">
+                      <span class="count_top"><i class="fa fa-user"></i>&nbsp;&nbsp;Total Betted Amount</span>
+                      <div class="count" style="text-align:center; font-size:20px;">{{total_betted_amount}}</div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-4 tile_stats_count">
+                      <span class="count_top"><i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;Maximum Amount </span>
+                      <div class="count" id="minamt" style="text-align:center; font-size:20px;">{{maximum_bet_amount}}</div>
+                      <span class="count_top"><i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;Minimum Amount </span>
+                      <div class="count" id="maxamt" style="text-align:center; font-size:20px;">{{minimum_bet_amount}}</div>
+                      <span class="count_top"><i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;Betted Amount </span>
+                      <div class="count" id="maxamt" style="text-align:center; font-size:20px;">{{betted_amount}}</div>
+                    </div>
+                  </b>
+                </div>
+                  <!-- pie chart -->
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="col-sm-6">
+                      <div class="">
+                      
+                        <div class="col-sm-4">
+                       
+                            
+                              <!-- <div id="chartContainer" ></div> -->
+                             
+                        
+                            
+
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /Pie chart -->
+                    <div class="row-sm-8">
+                      <div class="title_right">
+                        <div class="col-md-6">
+                          <span>
+                            <input type="text" style="width:200px" id="initial_bet_amount"class="form-control" placeholder="Amount" >
+                            &nbsp; &nbsp; <input type="radio" value ="1" id="g1" name="optradio">Loss
+                            &nbsp; &nbsp;<input type="radio" value="2" id="g2" name="optradio">Win
+                            &nbsp; &nbsp;<button type="button" id="bet_button" class="btn btn-round btn-primary" (click)="bet()">bet</button>    
+                          </span>
+                        </div><br><br><br><br>
+                        <div class="col-md-6">
+                          <span>
+                            <input type="text" id="betted_option" style="width:150px" placeholder="Betted option" class="form-control" readonly>
+                            &nbsp; &nbsp;<button type="button" id="change_bet_option" class="btn btn-round btn-primary" (click)="change_bet()">change option</button>    
+                          </span>
+                        </div><br><br><br><br>
+                        <div class="col-md-6">
+                          <span>
+                           <input type="text" id="amount_to_inceased_or_decreased" style="width:150px"  class="form-control" placeholder="Enter Amount "/>
+                            <button type="button"  id="bet_increase"class="btn btn-round btn-primary" (click)="increase_bet()">Increase</button>
+                            <button type="button" id="bet_decrease"class="btn btn-round btn-primary" (click)="decrease_bet()">Decrease</button>&nbsp;                          
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /top tiles -->
+              <!-- page content -->
+            </div>
+            <div class="modal-footer" style="text-align:center">
+              <button type="button" id="exit_button" class="btn btn-round btn-danger" (click)="exit_bet()">Exit Bet</button>&nbsp;
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Dropdown -->
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="row" style="text-align: center">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Overall Table</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content"  style="height:600px;overflow: auto;">
+                  
+        <table class="table">
+            <thead class="tablecolor">
+              <tr>
+                <th>Option ID</th>
+                <th>Team 1</th>
+                <th>Team 2</th>
+                <th>Team Selected</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Min Bet</th>
+                <th>Max Bet</th>
+                <th>Bet Status</th>
+                <th>Win Amount</th>
+                <th>Loss Amount</th>
+                <th>Win Count</th>
+                <th>Loss Count</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let option of optionsDetailsArray">
+                <td>{{ option.optionId }}</td>
+                <td>{{ option.team1 }}</td>
+                <td>{{ option.team2 }}</td>
+                <td>{{ option.selectTeam }}</td>
+                <td>{{ option.startTime }}</td>
+                <td>{{ option.endTime }}</td>
+                <td>{{ option.minBet }}</td>
+                <td>{{ option.maxBet }}</td>
+                <td>{{ option.result }}</td>
+                <td>{{ option.winAmount }}</td>
+                <td>{{ option.lossAmount }}</td>
+                <td>{{ option.winCount }}</td>
+                <td>{{ option.lossCount }}</td>
+                <td *ngIf= option.bool> <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal" (click)="set(option.optionId)">Bet Details</button></td>
+                <td *ngIf= !option.bool></td>
+              </tr>
+            </tbody>
+            </table>
+                </div>
+              </div> 
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <!-- <input type="button" value="asdfghjkl" (click)="#myModal"> -->
+    <!-- <button type="button" [disable]=data1; class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" >Set Result</button> -->
+    <!-- <button [disabled]=button (click)="onConfirm()">Confirm</button> -->
+    <div id="abcd">
+    <input type="button" id="openModalButton" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"value="checking"/>
+  </div>
+    </div>
+    

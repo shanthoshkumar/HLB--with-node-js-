@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>chainflux </title>
+   </head>
+   <body class="login">
+      <div>
+         <a class="hiddenanchor" id="signup"></a>
+         <a class="hiddenanchor" id="signin"></a>
+         <div class="login_wrapper">
+            <div class="animate form login_form">
+               <section class="login_content">
+                  <!-- Error message -->
+                  <div class="alert" *ngIf="serverErrorMessages">
+                     {{serverErrorMessages}}
+                  </div>
+                  <form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+                  <h1>Login Form</h1>
+                  <input type="text" name="email" #email="ngModel" [(ngModel)]="model.email" placeholder="Email" autocomplete="off" [pattern]="emailRegex" required 
+                  [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid }">
+                  <div *ngIf="signInForm.submitted && email.errors?.pattern">
+                     <label class="validation-message">Invalid email address.</label>
+                  </div>
+                  <input type="password" name="password" #password="ngModel" [(ngModel)]="model.password" placeholder="Password" autocomplete="off"  required minlength="4"
+                  [ngClass]="{'invalid-textbox' :signInForm.submitted && !password.valid }">
+                  <div *ngIf="signInForm.submitted && password.errors?.minlength">
+                     <label class="validation-message">Minimum 4 characters.</label>
+                  </div>
+                  <input type="password" name="publickey" #publickey="ngModel" [(ngModel)]="model.publickey" placeholder="private key" autocomplete="off" required
+                  [ngClass]="{'invalid-textbox' :signInForm.submitted && !publickey.valid }">
+                  <div *ngIf="signInForm.submitted && !publickey.valid">
+                     <label class="validation-message">Invalid private key address.</label>
+                  </div>
+                  <div>
+                     <button  type="submit"class="btn btn-default submit" value="Sign In">Log in</button>
+                     <a routerLink="/forgotpassword"  class="reset_pass">Lost your password?</a>
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="separator">
+                     <p class="change_link">New to site?
+                        <a routerLink="/signup" class="to_register"> Create Account </a>
+                     </p>
+                     <div class="clearfix"></div>
+                     <br />
+                     <div>
+                        <h1><i class="fa fa-paw"></i> Chainflux</h1>
+                        <p>©2018 All Rights Reserved. Chainflux. Privacy and Terms</p>
+                     </div>
+                  </div>
+                  </form>
+               </section>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
